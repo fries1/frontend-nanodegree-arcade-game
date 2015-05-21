@@ -23,10 +23,9 @@ var Engine = (function(global) {
         win = global.window,
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
-        /* The first row represents water, all other stone fields
+        /* Each row represents a row of "stone" playing fields
          */
         playingField = [['empty', 'empty', 'empty', 'empty', 'empty'],
-                        ['empty', 'empty', 'empty', 'empty', 'empty'],
                         ['empty', 'empty', 'empty', 'empty', 'empty'],
                         ['empty', 'empty', 'empty', 'empty', 'empty']],
         lastTime;

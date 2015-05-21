@@ -3,18 +3,18 @@ var Enemy = function() {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
     this.x = -101;
-    this.y = 219 + Math.floor(getRandomArbitrary(0, 3)) * -83;
+    this.y = 219 + getRandomArbitrary(0, 2) * -83;
     this.count = 1;
-    this.startingTime = Math.floor(getRandomArbitrary(1, 500));
+    this.startingTime = getRandomArbitrary(1, 500);
     this.started = false;
-    this.speed = Math.floor(getRandomArbitrary(1, 4));
+    this.speed = getRandomArbitrary(1, 4);
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
 };
 
 function getRandomArbitrary(min, max) {
-    return Math.random() * (max - min) + min;
+    return Math.floor(Math.random() * (max - min +1) + min);
 }
 
 // Update the enemy's position, required method for game
@@ -31,7 +31,9 @@ Enemy.prototype.update = function(dt) {
     this.count++;
     if(this.x > 505){
         this.x = -101;
-        this.startingTime * 3;
+        this.started = false;
+        this.count = 1;
+        //this.startingTime = this.startingTime * 2 > this.count ? this.startingTime *1 : this.count + 10;
     }
 };
 
@@ -69,7 +71,6 @@ Player.prototype.render = function(){
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 Player.prototype.handleInput = function(key){
-    console.log(key);
     switch (key){
         case 'up':
             this.nextMove = {
