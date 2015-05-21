@@ -1,6 +1,12 @@
 frontend-nanodegree-arcade-game
 ===============================
 
-Students should use this rubric: https://www.udacity.com/course/viewer#!/c-ud015/l-3072058665/m-3072588797
+to run:
+simply open the inclued index.html file with all other files and folders in the same directory.
 
-for self-checking their submission.
+how to play:
+use the arrow keys on your keyboard to maneuver the player around the playing area. The Goal
+is to reach the water row. Avoid the enemies crossing the screen. The is resetted when you
+reach the water or when an enemy catches you.
+Good luck!
+

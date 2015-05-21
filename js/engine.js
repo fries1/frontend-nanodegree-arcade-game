@@ -106,17 +106,16 @@ var Engine = (function(global) {
         player.update();
     }
 
-
+    // Here it is tested if there exists a collision between the player and one of the enemies
     function checkCollisions(){
-        // update playing field
+        // Every enemy is checked if his position overlaps with the player's
         for(var i = 0; i < allEnemies.length; i++){
-            //console.log('in for');
-            //console.log('enemy ' + i + ' x ' + allEnemies[i].x + ' y ' + allEnemies[i].y);
-            //console.log(i)
+            // first we look if enemy and player are in the same row
             if(allEnemies[i].y == player.y){
-               // console.log('possible collision detected');
+               // then we compare their x coordinates and if they fall into window of 50px,
+               // are collision is detected and the game is reset
                 if(allEnemies[i].x + 50 > player.x && allEnemies[i].x < player.x){
-                    console.log('collision detected');
+                    reset('e');
                 }
             }
         }
@@ -186,15 +185,51 @@ var Engine = (function(global) {
      * those sorts of things. It's only called once by the init() method.
      */
     function reset(eventStr) {
-        console.log('reset');
-        if(eventStr = 'p'){
+        // test if player has one the previous game
+        if(eventStr == 'p'){
             console.log('player won');
+
+
+            ctx.font="20px Georgia";
+            ctx.fillText("Hello World!",250,250);
+
+            ctx.font="30px Verdana";
+            // Create gradient
+            var gradient=ctx.createLinearGradient(0,0,canvas.width,0);
+            gradient.addColorStop("0","magenta");
+            gradient.addColorStop("0.5","blue");
+            gradient.addColorStop("1.0","red");
+            // Fill with gradient
+            ctx.fillStyle=gradient;
+            ctx.fillText("Big smile!",10,90);
+            ctx.fillStyle = "white"
+            ctx.font = "36pt impact";
+            ctx.textAlign = "center";
+            ctx.fillText("Player won!", canvas.width/2, 100);
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = "black";
+            ctx.strokeText("CANVAS MEMES!", canvas.width/2, 50);
             // now reset game
             player = new Player();
             allEnemies = [];
             createEnemies();
         }
+        // test if player has one the previous game
+         if(eventStr == 'e'){
+            console.log('enemy won');
+            ctx.fillStyle = "white"
+            ctx.font = "36pt impact";
+            ctx.textAlign = "center";
+            ctx.fillText("Player won!", canvas.width/2, 100);
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = "black";
+            ctx.strokeText("CANVAS MEMES!", canvas.width/2, 100);
+            // now reset game
 
+            player = new Player();
+            allEnemies = [];
+            createEnemies();
+        }
     }
 
     /* Go ahead and load all of the images we know we're going to need to
