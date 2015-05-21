@@ -108,8 +108,20 @@ var Engine = (function(global) {
 
 
     function checkCollisions(){
-
+        // update playing field
+        for(var i = 0; i < allEnemies.length; i++){
+            //console.log('in for');
+            //console.log('enemy ' + i + ' x ' + allEnemies[i].x + ' y ' + allEnemies[i].y);
+            //console.log(i)
+            if(allEnemies[i].y == player.y){
+               // console.log('possible collision detected');
+                if(allEnemies[i].x + 50 > player.x && allEnemies[i].x < player.x){
+                    console.log('collision detected');
+                }
+            }
+        }
     }
+
 
     /* This function initially draws the "game level", it will then call
      * the renderEntities function. Remember, this function is called every

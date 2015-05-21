@@ -24,8 +24,8 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     if(this.count == this.startingTime || this.started){
-        console.log('found an enemy to start');
-        this.x += 101 * dt * this.speed;
+        //console.log('found an enemy to start');
+        this.x += (Math.round(101 * dt * this.speed));
         this.started = true;
     }
     this.count++;
@@ -46,8 +46,8 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 var Player = function() {
-    this.x = 505/2 - 101/2;
-    this.y = 606 - 171 - 50;
+    this.x = 202;
+    this.y = 385; //606 - 171 - 50;
     this.sprite = 'images/char-boy.png';
     this.nextMove = null;
 };
@@ -62,7 +62,6 @@ Player.prototype.update = function(){
         if(newY <= 385 && newY >= -30){
             this.y = newY;
         }
-
         console.log('x ' + this.x + ' y ' + this.y);
         this.nextMove = null;
     }
