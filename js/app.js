@@ -109,9 +109,6 @@ var createEnemies = function(){
         var e = new Enemy();
         allEnemies.push(e);
     }
-
-
-   // var e2 = new Enemy();
 }
 createEnemies();
 // Place the player object in a variable called player

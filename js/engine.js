@@ -23,6 +23,12 @@ var Engine = (function(global) {
         win = global.window,
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
+        /* The first row represents water, all other stone fields
+         */
+        playingField = [['empty', 'empty', 'empty', 'empty', 'empty'],
+                        ['empty', 'empty', 'empty', 'empty', 'empty'],
+                        ['empty', 'empty', 'empty', 'empty', 'empty'],
+                        ['empty', 'empty', 'empty', 'empty', 'empty']],
         lastTime;
 
     canvas.width = 505;
@@ -80,7 +86,11 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+        checkCollisions();
+        // Check if player has reached the water, if so player won and we reset the game
+        if(player.y < 0){
+            reset('p');
+        }
     }
 
     /* This is called by the update function  and loops through all of the
@@ -95,6 +105,11 @@ var Engine = (function(global) {
             enemy.update(dt);
         });
         player.update();
+    }
+
+
+    function checkCollisions(){
+
     }
 
     /* This function initially draws the "game level", it will then call
@@ -159,8 +174,16 @@ var Engine = (function(global) {
      * handle game reset states - maybe a new game menu or a game over screen
      * those sorts of things. It's only called once by the init() method.
      */
-    function reset() {
-        // noop
+    function reset(eventStr) {
+        console.log('reset');
+        if(eventStr = 'p'){
+            console.log('player won');
+            // now reset game
+            player = new Player();
+            allEnemies = [];
+            createEnemies();
+        }
+
     }
 
     /* Go ahead and load all of the images we know we're going to need to
