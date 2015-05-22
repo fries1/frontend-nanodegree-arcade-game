@@ -62,7 +62,7 @@ var Engine = (function(global) {
          * function again as soon as the browser is able to draw another frame.
          */
         win.requestAnimationFrame(main);
-    };
+    }
 
     /* This function does some initial setup that should only occur once,
      * particularly setting the lastTime variable that is required for the
@@ -189,43 +189,16 @@ var Engine = (function(global) {
         if(eventStr == 'p'){
             console.log('player won');
 
-
-            ctx.font="20px Georgia";
-            ctx.fillText("Hello World!",250,250);
-
-            ctx.font="30px Verdana";
-            // Create gradient
-            var gradient=ctx.createLinearGradient(0,0,canvas.width,0);
-            gradient.addColorStop("0","magenta");
-            gradient.addColorStop("0.5","blue");
-            gradient.addColorStop("1.0","red");
-            // Fill with gradient
-            ctx.fillStyle=gradient;
-            ctx.fillText("Big smile!",10,90);
-            ctx.fillStyle = "white"
-            ctx.font = "36pt impact";
-            ctx.textAlign = "center";
-            ctx.fillText("Player won!", canvas.width/2, 100);
-            ctx.lineWidth = 3;
-            ctx.strokeStyle = "black";
-            ctx.strokeText("CANVAS MEMES!", canvas.width/2, 50);
             // now reset game
             player = new Player();
             allEnemies = [];
             createEnemies();
         }
-        // test if player has one the previous game
+        // test if enemy has won the previous game
          if(eventStr == 'e'){
             console.log('enemy won');
-            ctx.fillStyle = "white"
-            ctx.font = "36pt impact";
-            ctx.textAlign = "center";
-            ctx.fillText("Player won!", canvas.width/2, 100);
-            ctx.lineWidth = 3;
-            ctx.strokeStyle = "black";
-            ctx.strokeText("CANVAS MEMES!", canvas.width/2, 100);
-            // now reset game
 
+            // now reset game
             player = new Player();
             allEnemies = [];
             createEnemies();

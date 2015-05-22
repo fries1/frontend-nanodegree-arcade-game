@@ -60,7 +60,7 @@ var Player = function() {
 
 // compute player's new position if user put in a command
 Player.prototype.update = function(){
-    if(this.nextMove != null){
+    if(this.nextMove !== null){
         var newX = this.x + this.nextMove.x;
         var newY = this.y + this.nextMove.y;
         // make sure that user's input would not make the player leave the playing field
@@ -118,7 +118,7 @@ var createEnemies = function(){
         var e = new Enemy();
         allEnemies.push(e);
     }
-}
+};
 createEnemies();
 // Place the player object in a variable called player
 
